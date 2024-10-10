@@ -11,13 +11,14 @@ GREEN = (0, 255, 0)
 pygame.init()
 pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Shooter")
+pygame.display.set_caption("MeteOro")
 clock = pygame.time.Clock()
 
 
 # Función para dibujar texto en la pantalla
+# Función para dibujar texto en la pantalla con una fuente personalizada
 def draw_text(surface, text, size, x, y):
-    font = pygame.font.SysFont("serif", size)
+    font = pygame.font.Font("assets/SuperMario256.ttf", size)  # Cargar la fuente personalizada
     text_surface = font.render(text, True, WHITE)
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x, y)
@@ -36,10 +37,12 @@ def draw_shield_bar(surface, x, y, percentage):
 
 
 def show_menu():
-    screen.fill(BLACK)
+    screen.blit(background_menu, [0, 0])  # Coloca el fondo
     draw_text(screen, "MeteOro", 65, WIDTH // 2, HEIGHT // 4)
     draw_text(screen, "Presione ENTER para iniciar", 27, WIDTH // 2, HEIGHT // 2)
-    draw_text(screen, "Presione I para ver las instrucciones", 20, WIDTH // 2, HEIGHT * 3 / 4)
+    draw_text(
+        screen, "Presione I para ver las instrucciones", 20, WIDTH // 2, HEIGHT * 3 / 4
+    )
     pygame.display.flip()
     waiting = True
     while waiting:
@@ -55,12 +58,18 @@ def show_menu():
 
 
 def show_instructions():
-    screen.fill(BLACK)
+    screen.blit(background_instrucciones, [0, 0])  # Coloca el fondo
     draw_text(screen, "INSTRUCCIONES", 50, WIDTH // 2, HEIGHT // 4)
-    draw_text(screen, "🔼 🔽 Mover con las flechas", 25, WIDTH // 2, HEIGHT // 2 - 50)
-    draw_text(screen, "␣ Disparar con la barra espaciadora", 25, WIDTH // 2, HEIGHT // 2 + 50)
-    draw_text(screen, "💥 Evita los meteoros y sobrevive", 25, WIDTH // 2, HEIGHT // 2 + 100)
-    draw_text(screen, "Presiona la tecla BORRAR para volver", 20, WIDTH // 2, HEIGHT * 3 / 4)
+    draw_text(screen, "← → Mover con las flechas", 25, WIDTH // 2, HEIGHT // 2 - 50)
+    draw_text(
+        screen, "─ Disparar con la barra espaciadora", 25, WIDTH // 2, HEIGHT // 2 + 50
+    )
+    draw_text(
+        screen, "* Evita los meteoros y sobrevive", 25, WIDTH // 2, HEIGHT // 2 + 100
+    )
+    draw_text(
+        screen, "Presiona la tecla BORRAR para volver", 20, WIDTH // 2, HEIGHT * 3 / 4
+    )
     pygame.display.flip()
     waiting = True
     while waiting:
@@ -75,10 +84,12 @@ def show_instructions():
 
 
 def show_game_over_screen(score):
-    screen.fill(BLACK)
+    screen.blit(background, [0, 0])  # Coloca el fondo
     draw_text(screen, "JUEGO TERMINADO", 65, WIDTH // 2, HEIGHT // 4)
     draw_text(screen, f"Puntaje: {score}", 27, WIDTH // 2, HEIGHT // 2)
-    draw_text(screen, "Presiona ENTER para volver al Menu", 20, WIDTH // 2, HEIGHT * 3 / 4)
+    draw_text(
+        screen, "Presiona ENTER para volver al Menu", 20, WIDTH // 2, HEIGHT * 3 / 4
+    )
     pygame.display.flip()
     waiting = True
     while waiting:
@@ -96,7 +107,7 @@ def show_game_over_screen(score):
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("assets/player.png").convert()
+        self.image = pygame.image.load("assets/player2.png").convert()
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH // 2
@@ -244,6 +255,8 @@ for i in range(9):
 
 # Cargar imagen de fondo
 background = pygame.image.load("assets/background.png").convert()
+background_menu = pygame.image.load("assets/background_menu.jpg").convert()
+background_instrucciones = pygame.image.load("assets/background_instrucciones.jpg").convert()
 
 # Cargar sonidos
 laser_sound = pygame.mixer.Sound("assets/laser5.ogg")
