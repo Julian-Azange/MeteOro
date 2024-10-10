@@ -1,6 +1,7 @@
 # Proyecto de Juego en Pygame
 
-Este es un simple juego desarrollado utilizando **Pygame**, una biblioteca de desarrollo de videojuegos para Python. El objetivo del juego es [describe brevemente el objetivo del juego, por ejemplo: "esquivar obstáculos", "atrapar objetos", etc.].
+Este es un simple juego desarrollado utilizando **Pygame**, una biblioteca de desarrollo de videojuegos para Python.
+El objetivo del juego es esquivar meteoritos y destruirlos para lograr conseguir puntos, cada meteorito suma 10 puntos al marcador, la barra de vida te muestra cuanto te quita cada vez que un meteorito coliciona con tu nave.
 
 ## Tabla de contenidos
 
