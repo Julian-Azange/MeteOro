@@ -32,4 +32,4 @@ Este es un simple juego desarrollado utilizando **Pygame**, una biblioteca de de
 Primero, clona el repositorio en tu máquina local usando Git. Abre la terminal y ejecuta el siguiente comando:
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repositorio.git
+git clone https://github.com/Julian-Azange/MeteOro.git
